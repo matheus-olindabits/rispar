@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
+import 'package:rispar_project/app/modules/simulation/components/money_available_page/money_available_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/register_page/register_page.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 
@@ -42,7 +43,7 @@ class AcquisitionPageState extends ModularState<AcquisitionPage, AcquisitionCont
         ),
         SafeArea(
           child: SingleChildScrollView(
-            child: controller.step == 1 ? RegisterPage() : Container(child: Text('teste'),),
+            child: controller.step == 1 ? const RegisterPage() : const MoneyAvailablePage(),
           ),
         ),
       ],

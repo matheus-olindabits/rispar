@@ -9,6 +9,7 @@ abstract class _AcquisitionControllerBase with Store {
 
   late String name;
   late String email;
+  late double money;
 
   @observable
   int step = 1;
