@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 // ignore: depend_on_referenced_packages, library_prefixes
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'auth_interceptor.dart';
 
@@ -11,7 +11,7 @@ class CustomDio {
   late Dio _dio;
 
   BaseOptions options = BaseOptions(
-    baseUrl: DotEnv.env['base_url'].toString()
+    baseUrl: dotenv.env['base_url'].toString()
   );
 
   CustomDio._() {

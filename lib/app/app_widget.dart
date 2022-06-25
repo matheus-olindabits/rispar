@@ -9,10 +9,10 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Rispar Project',
+      title: 'Rispar',
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          primarySwatch: themeColor,
+          primarySwatch: themePrimary,
           backgroundColor: Colors.grey[100]),
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,

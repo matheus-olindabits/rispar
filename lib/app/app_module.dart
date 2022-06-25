@@ -1,24 +1,15 @@
 import 'package:flutter_modular/flutter_modular.dart';
-
-import 'core/auth/auth_store.dart';
-import 'modules/default/erro/erro_page.dart';
-import 'modules/default/splash_page/splash_page.dart';
-import 'modules/start/pages/start_controller.dart';
-import 'modules/start/start_module.dart';
-import 'modules/usuario/usuario_module.dart';
+import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
+import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_page.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.lazySingleton((i) => AuthStore()),
-        Bind.lazySingleton((i) => StartController()),
-      ];
+    Bind.lazySingleton((i) => AcquisitionController()),
+  ];
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(Modular.initialRoute, child: (_, args) => SplashPage()),
-        ChildRoute('/erro', child: (_, args) => ErroPage()),
-        ModuleRoute('/start', module: StartModule()),
-        ModuleRoute('/usuario', module: UsuarioModule())
-      ];
+    ChildRoute(Modular.initialRoute, child: (_, args) => const AcquisitionPage()),
+  ];
 }

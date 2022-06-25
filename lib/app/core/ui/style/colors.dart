@@ -1,37 +1,21 @@
 import 'package:flutter/material.dart';
 
-const pinkMariaMaria = Color(0xFFF34580);
-const darkGrey = Color(0xFF555555);
-const mediumGrey = Color(0xFFAAAAAA);
-const green = Color(0XFF45C251);
-const primary = Color(0xFF3B3B98);
-const white = Color(0xFFFFFFFF);
-const grey = Color(0xFF777777);
-const black = Color(0xFF000000);
-const red = Color(0xFFFF0000);
-const redButton = Color(0XFFF54F3D);
-const lightGrey = Color(0xEEEEEEEE);
+const primary = Color(0xFF107676);
+const secondary = Color(0xFF051027);
+const light = Color(0xFF25d4d3);
 
-List<Color> coresCategoria = [
-  Color(0xFF7087FC),
-  Color(0xFFF34580),
-  Color(0xFFFAD331),
-  Color(0xFF3B3B98),
-  Color(0xFF1D5882)
-];
-
-final MaterialColor themeColor = const MaterialColor(
-  0xFFF34580,
-  const <int, Color>{
-    50: const Color(0xFFF34580),
-    100: const Color(0xFFF34580),
-    200: const Color(0xFFF34580),
-    300: const Color(0xFFF34580),
-    400: const Color(0xFFF34580),
-    500: const Color(0xFFF34580),
-    600: const Color(0xFFF34580),
-    700: const Color(0xFFF34580),
-    800: const Color(0xFFF34580),
-    900: const Color(0xFFF34580),
+const MaterialColor themePrimary = MaterialColor(
+  0xFF107676,
+  <int, Color>{
+    50:  Color(0xFF107676),
+    100:  Color(0xFF107676),
+    200:  Color(0xFF107676),
+    300:  Color(0xFF107676),
+    400:  Color(0xFF107676),
+    500:  Color(0xFF107676),
+    600:  Color(0xFF107676),
+    700:  Color(0xFF107676),
+    800:  Color(0xFF107676),
+    900:  Color(0xFF107676),
   },
 );
