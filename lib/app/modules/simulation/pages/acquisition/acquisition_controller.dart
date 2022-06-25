@@ -7,7 +7,15 @@ class AcquisitionController = _AcquisitionControllerBase with _$AcquisitionContr
 
 abstract class _AcquisitionControllerBase with Store {
 
+  late String name;
+  late String email;
+
   @observable
-  int value = 0;
+  int step = 1;
+
+  @action
+  changeStep(int value){
+    step = value;
+  }
 
 }

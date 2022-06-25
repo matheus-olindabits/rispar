@@ -230,6 +230,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "flutter_svg",
+      "rootUri": "file:///Users/matheusleal/.pub-cache/hosted/pub.dartlang.org/flutter_svg-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/matheusleal/Documents/Workstation/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -386,6 +392,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_drawing",
+      "rootUri": "file:///Users/matheusleal/.pub-cache/hosted/pub.dartlang.org/path_drawing-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_parsing",
+      "rootUri": "file:///Users/matheusleal/.pub-cache/hosted/pub.dartlang.org/path_parsing-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "pedantic",
       "rootUri": "file:///Users/matheusleal/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.1",
       "packageUri": "lib/",
@@ -536,7 +554,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-06-25T13:31:42.283671Z",
+  "generated": "2022-06-25T18:43:02.112203Z",
   "generator": "pub",
   "generatorVersion": "2.17.3"
 }
