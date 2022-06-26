@@ -6,6 +6,7 @@ import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/loading_page/loading_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
+import 'package:rispar_project/app/shared/validations/money_validation.dart';
 
 class SelectParcelePage extends StatefulWidget {
 
@@ -89,7 +90,7 @@ late AcquisitionController acquisitionController;
             ),
           ),
           const SizedBox(height: 10,),
-          Text('R\$ ${controller.acquisitionController.money}', style: const TextStyle(
+          Text('R\$ ${ MoneyValidation.maskMoneyBr(controller.acquisitionController.money)}', style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25,
             color: primary

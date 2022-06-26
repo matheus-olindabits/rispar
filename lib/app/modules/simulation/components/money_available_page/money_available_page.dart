@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/money_available_page/money_available_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
+import 'package:rispar_project/app/shared/validations/money_validation.dart';
 
 class MoneyAvailablePage extends StatefulWidget {
 
@@ -111,7 +111,7 @@ late AcquisitionController acquisitionController;
                     keyboardType: TextInputType.number,
                     style: const TextStyle(
                     fontSize: 30, color: primary, fontWeight: FontWeight.bold),
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly, CurrencyInputFormatter()],
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly, MoneyValidation()],
                     decoration: const InputDecoration(
                       hintText: "0,00",
                       floatingLabelBehavior: FloatingLabelBehavior.always
@@ -119,13 +119,13 @@ late AcquisitionController acquisitionController;
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Por favor, digite um valor';
-                      }else if(controller.convertToDoubleMask(value) < 500 || controller.convertToDoubleMask(value) > 300000 ){
+                      }else if(MoneyValidation.convertToDoubleMask(value) < 500 || MoneyValidation.convertToDoubleMask(value) > 300000 ){
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Digite um valor entre R\$ 500,00 e R\$ 3000.000,00')),
                         );
                         return 'Valor não permitido';
                       }else{
-                        controller.setGetMoney(controller.convertToDoubleMask(value));
+                        controller.setGetMoney(MoneyValidation.convertToDoubleMask(value));
                       }
                       return null;
                     },
@@ -159,26 +159,4 @@ late AcquisitionController acquisitionController;
     );
   }
 
-}
-
-class CurrencyInputFormatter extends TextInputFormatter {
-
-  @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
-
-        if(newValue.selection.baseOffset == 0){
-          return newValue;
-        }
-
-        double value = double.parse(newValue.text);
-
-        final formatter = NumberFormat("#,##0.00", "pt_Br" );
-
-        String newText = formatter.format(value/100);
-
-        return newValue.copyWith(
-          text: newText,
-          selection: TextSelection.collapsed(offset: newText.length)
-        );
-    }
 }

@@ -23,10 +23,4 @@ abstract class _MoneyAvailableControllerBase with Store {
     acquisitionController.changeStep(3);
   }
 
-  double convertToDoubleMask(String value){
-    var valor = value.replaceAll('.', '');
-    valor = valor.replaceAll(',', '.');
-    return double.parse(valor);
-  }
-
 }
