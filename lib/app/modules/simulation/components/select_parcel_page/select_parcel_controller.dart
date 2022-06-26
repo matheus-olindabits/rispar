@@ -8,6 +8,7 @@ import 'package:rispar_project/app/shared/components/catch_error.dart';
 
 part 'select_parcel_controller.g.dart';
 
+
 // ignore: library_private_types_in_public_api
 class SelectParceleController = _SelectParceleControllerBase with _$SelectParceleController;
 
@@ -26,6 +27,11 @@ abstract class _SelectParceleControllerBase with Store {
   @observable
   bool loading = false;
 
+  void initValuesParcelAndPercentage(){
+    setParcel(3);
+    setPercentage(20);
+  }
+
   void setParcel(int value){
     acquisitionController.parcel = value;
   }
@@ -35,8 +41,8 @@ abstract class _SelectParceleControllerBase with Store {
   }
 
   void setStepProgress(){
-     acquisitionController.step = 4;
-     progressController.stepActual = 3;
+     acquisitionController.changeStep(4);
+     progressController.changeStepActual(3);
   }
 
   Future<void> sendSimluation() async {

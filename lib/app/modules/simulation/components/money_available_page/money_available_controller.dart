@@ -17,9 +17,10 @@ abstract class _MoneyAvailableControllerBase with Store {
     acquisitionController.money = value;
   }
 
+  @action
   void setStepProgress(){
-     acquisitionController.step = 3;
-     progressController.stepActual = 2;
+    progressController.changeStepActual(2);
+    acquisitionController.changeStep(3);
   }
 
   double convertToDoubleMask(String value){

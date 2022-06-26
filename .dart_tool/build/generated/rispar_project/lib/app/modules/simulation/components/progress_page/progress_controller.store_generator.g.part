@@ -35,6 +35,17 @@ mixin _$ProgressController on _ProgressControllerBase, Store {
   }
 
   @override
+  dynamic changeStepActual(int value) {
+    final _$actionInfo = _$_ProgressControllerBaseActionController.startAction(
+        name: '_ProgressControllerBase.changeStepActual');
+    try {
+      return super.changeStepActual(value);
+    } finally {
+      _$_ProgressControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 stepActual: ${stepActual}

@@ -171,10 +171,7 @@ late AcquisitionController acquisitionController;
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //   const SnackBar(content: Text('Processing Data')),
-                      // );
-                      controller.acquisitionController.step = 2;
+                      controller.setRegister();
                     }
                   },
                   child: const Text('Continuar'),

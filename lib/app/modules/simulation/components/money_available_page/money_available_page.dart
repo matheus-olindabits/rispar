@@ -6,13 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/money_available_page/money_available_controller.dart';
-import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class MoneyAvailablePage extends StatefulWidget {
 
-  const MoneyAvailablePage( {Key? key } ) : super(key: key);
+  const   MoneyAvailablePage( {Key? key } ) : super(key: key);
   @override
   MoneyAvailablePageState createState() => MoneyAvailablePageState();
 }
@@ -33,22 +31,16 @@ late AcquisitionController acquisitionController;
   Widget build(BuildContext context) {
     return  Observer(
       builder: (_) {
-        return _MoneyAvailabePage();
+        return _moneyAvailabePage();
       },
     );
   }
 
-  // ignore: non_constant_identifier_names
-  Widget _MoneyAvailabePage() {
+  Widget _moneyAvailabePage() {
     return Container(
       alignment: AlignmentDirectional.center,
       child: Column(
         children: [
-          SizedBox(
-            height: height(context, 0.05),
-          ),
-
-          const ProgressPage(),
 
           SizedBox(
             height: height(context, 0.05),

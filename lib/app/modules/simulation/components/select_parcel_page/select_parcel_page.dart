@@ -4,10 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/loading_page/loading_page.dart';
-import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class SelectParcelePage extends StatefulWidget {
 
@@ -23,6 +21,7 @@ late AcquisitionController acquisitionController;
 
   @override
   void initState() {
+    controller.initValuesParcelAndPercentage();
     super.initState();
   }
 
@@ -40,11 +39,6 @@ late AcquisitionController acquisitionController;
       alignment: AlignmentDirectional.center,
       child: Column(
         children: [
-          SizedBox(
-            height: height(context, 0.05),
-          ),
-
-          const ProgressPage(),
 
           SizedBox(
             height: height(context, 0.05),
@@ -107,80 +101,87 @@ late AcquisitionController acquisitionController;
   }
 
   Widget _selectParcel(){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const Text('Escolha a quantidade de parcelas', style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18
+    return SizedBox(
+      width: width(context, 0.8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text('Escolha a quantidade de parcelas', style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18
+            ),
           ),
-        ),
-        Slider(
-          value: controller.parcelValue,
-          min: 3.0,
-          max: 12.0,
-          divisions: 3,
-          onChanged: (double newValue) {
-            controller.parcelValue = newValue;
-            controller.setParcel(newValue.toInt());
-          },
-          activeColor: primary,
-          inactiveColor: light,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text("3", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text("6", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text("9", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text("12", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ],
+          Slider(
+            value: controller.parcelValue,
+            min: 3.0,
+            max: 12.0,
+            divisions: 3,
+            onChanged: (double newValue) {
+              controller.parcelValue = newValue;
+              controller.setParcel(newValue.toInt());
+            },
+            activeColor: primary,
+            inactiveColor: light,
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text("3", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text("6", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text("9", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text("12", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _selectPercentage(){
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const Text('Escolha o percentual de garantia', style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18
+    return SizedBox(
+      width: width(context, 0.8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text('Escolha o percentual de garantia', style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18
+            ),
           ),
-        ),
-        Slider(
-          value: controller.percentageValue,
-          min: 20,
-          max: 50,
-          divisions: 2,
-          onChanged: (double newValue) {
-            controller.percentageValue = newValue;
-            controller.setPercentage(newValue.toInt());
-          },
-          activeColor: primary,
-          inactiveColor: light,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text("20%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text("35%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text("50%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ],
+          Slider(
+            value: controller.percentageValue,
+            min: 20,
+            max: 50,
+            divisions: 2,
+            onChanged: (double newValue) {
+              controller.percentageValue = newValue;
+              controller.setPercentage(newValue.toInt());
+            },
+            activeColor: primary,
+            inactiveColor: light,
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text("20%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text("35%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Text("50%", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _textGuarantee(){
     return SizedBox(
+      width: width(context, 0.8),
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
@@ -233,7 +234,9 @@ late AcquisitionController acquisitionController;
             height: height(context, 0.06),
             child: ElevatedButton(
               onPressed: () {
-                //controller.acquisitionController.step = 2;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('No momento não estamos com essa funcionalidade!')),
+                );
               },
               child: const Text('Adicionar garantia', style: TextStyle(fontWeight: FontWeight.bold),),
             ),

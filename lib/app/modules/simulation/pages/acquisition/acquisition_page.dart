@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/money_available_page/money_available_page.dart';
+import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/register_page/register_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_page.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
@@ -24,7 +25,6 @@ class AcquisitionPageState extends ModularState<AcquisitionPage, AcquisitionCont
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       body: Observer(
         builder: (_) {
           return Center(
@@ -44,7 +44,15 @@ class AcquisitionPageState extends ModularState<AcquisitionPage, AcquisitionCont
         ),
         SafeArea(
           child: SingleChildScrollView(
-            child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : Container(child: Text('teste'),),
+            child: Column(
+              children: [
+                SizedBox(height: height(context, 0.05)),
+                const ProgressPage(),
+                SizedBox(
+                  child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : Container(child: Text('teste'),),
+                ),
+              ],
+            ),
           ),
         ),
       ],

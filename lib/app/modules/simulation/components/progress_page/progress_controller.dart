@@ -12,17 +12,27 @@ abstract class _ProgressControllerBase with Store {
   AcquisitionController acquisitionController = Modular.get<AcquisitionController>();
 
   @observable
-  int stepActual = 1;
+  int stepActual = 0;
 
   @action
   validateComeBack(){
     if(acquisitionController.step == 2){
-      acquisitionController.step == 1;
+      acquisitionController.step = 1;
+      stepActual = 0;
     }else if(acquisitionController.step == 3){
       acquisitionController.step = 2;
+      stepActual = 1;
+    }else if(acquisitionController.step == 4){
+      acquisitionController.step = 3;
+      stepActual = 2;
     }else{
       acquisitionController.step = 1;
     }
+  }
+
+  @action
+  changeStepActual(int value){
+    stepActual = value;
   }
 
 }

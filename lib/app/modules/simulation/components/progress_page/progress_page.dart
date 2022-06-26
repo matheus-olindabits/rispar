@@ -17,8 +17,6 @@ class ProgressPage extends StatefulWidget {
 // ignore: deprecated_member_use
 class ProgressPageState extends ModularState<ProgressPage, ProgressController> {
 
-late AcquisitionController acquisitionController;
-
   @override
   void initState() {
     super.initState();
@@ -26,9 +24,9 @@ late AcquisitionController acquisitionController;
 
   @override
   Widget build(BuildContext context) {
-    return  Observer(
+    return Observer(
       builder: (_) {
-        return _progressIndicator();
+        return (controller.stepActual > 0) ? _progressIndicator(): const SizedBox.shrink();
       },
     );
   }
