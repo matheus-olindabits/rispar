@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_controller.dart';
-import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class ProgressPage extends StatefulWidget {
@@ -26,7 +25,7 @@ class ProgressPageState extends ModularState<ProgressPage, ProgressController> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        return (controller.stepActual > 0) ? _progressIndicator(): const SizedBox.shrink();
+        return (controller.stepActual > 0 && !controller.loading) ? _progressIndicator(): const SizedBox.shrink();
       },
     );
   }

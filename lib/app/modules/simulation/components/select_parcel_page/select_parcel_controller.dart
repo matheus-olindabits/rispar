@@ -24,9 +24,6 @@ abstract class _SelectParceleControllerBase with Store {
   @observable
   double percentageValue = 20.0;
 
-  @observable
-  bool loading = false;
-
   void initValuesParcelAndPercentage(){
     setParcel(3);
     setPercentage(20);
@@ -47,7 +44,7 @@ abstract class _SelectParceleControllerBase with Store {
 
   Future<void> sendSimluation() async {
     try {
-      loading = true;
+      progressController.loading = true;
 
       Simulation simulation = Simulation(
         fullname: acquisitionController.name, 
@@ -58,10 +55,10 @@ abstract class _SelectParceleControllerBase with Store {
         has_protected_collateral: false
       );
       await simulationService.sendSimulation(simulation);
-      loading = false;
+      progressController.loading = false;
       setStepProgress();
     } catch (error) {
-      loading = false;
+      progressController.loading = false;
       CatchError.errorRequest(error);
     }
   }

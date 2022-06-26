@@ -14,6 +14,9 @@ abstract class _ProgressControllerBase with Store {
   @observable
   int stepActual = 0;
 
+  @observable
+  bool loading = false;
+
   @action
   validateComeBack(){
     if(acquisitionController.step == 2){

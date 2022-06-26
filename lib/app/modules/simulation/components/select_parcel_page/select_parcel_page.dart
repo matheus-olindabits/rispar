@@ -30,7 +30,7 @@ late AcquisitionController acquisitionController;
   Widget build(BuildContext context) {
     return  Observer(
       builder: (_) {
-        return controller.loading ? const LoadingPage() : _selectValuesPage();
+        return controller.progressController.loading ? const LoadingPage() : _selectValuesPage();
       },
     );
   }

@@ -41,27 +41,11 @@ mixin _$SelectParceleController on _SelectParceleControllerBase, Store {
     });
   }
 
-  final _$loadingAtom = Atom(name: '_SelectParceleControllerBase.loading');
-
-  @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
-  }
-
-  @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
-    });
-  }
-
   @override
   String toString() {
     return '''
 parcelValue: ${parcelValue},
-percentageValue: ${percentageValue},
-loading: ${loading}
+percentageValue: ${percentageValue}
     ''';
   }
 }

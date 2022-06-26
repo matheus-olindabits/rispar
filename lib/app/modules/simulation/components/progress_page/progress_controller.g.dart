@@ -24,6 +24,21 @@ mixin _$ProgressController on _ProgressControllerBase, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: '_ProgressControllerBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
   final _$_ProgressControllerBaseActionController =
       ActionController(name: '_ProgressControllerBase');
 
@@ -52,7 +67,8 @@ mixin _$ProgressController on _ProgressControllerBase, Store {
   @override
   String toString() {
     return '''
-stepActual: ${stepActual}
+stepActual: ${stepActual},
+loading: ${loading}
     ''';
   }
 }
