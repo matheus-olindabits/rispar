@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
+import 'package:rispar_project/app/modules/simulation/components/loading_page.dart/loading_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -28,7 +29,7 @@ late AcquisitionController acquisitionController;
   Widget build(BuildContext context) {
     return  Observer(
       builder: (_) {
-        return _selectValuesPage();
+        return controller.loading ? const LoadingPage() : _selectValuesPage();
       },
     );
   }
@@ -149,7 +150,7 @@ late AcquisitionController acquisitionController;
           divisions: 3,
           onChanged: (double newValue) {
             controller.parcelValue = newValue;
-            controller.acquisitionController.parcel = newValue.toInt();
+            controller.setParcel(newValue.toInt());
           },
           activeColor: primary,
           inactiveColor: light,
@@ -186,7 +187,7 @@ late AcquisitionController acquisitionController;
           divisions: 2,
           onChanged: (double newValue) {
             controller.percentageValue = newValue;
-            controller.acquisitionController.parcel = newValue.toInt();
+            controller.setPercentage(newValue.toInt());
           },
           activeColor: primary,
           inactiveColor: light,
@@ -246,7 +247,7 @@ late AcquisitionController acquisitionController;
                 shadowColor: Colors.transparent.withOpacity(0.1),
               ),
               onPressed: () {
-                controller.acquisitionController.step = 2;
+                controller.sendSimluation();
               },
               child: const Text('Continuar sem garantia', style: TextStyle(color: primary, fontWeight: FontWeight.bold),),
             ),

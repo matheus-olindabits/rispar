@@ -126,6 +126,8 @@ late AcquisitionController acquisitionController;
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Por favor, digite seu nome completo';
+                }else{
+                  controller.setFullName(value);
                 }
                 return null;
               },
@@ -152,7 +154,7 @@ late AcquisitionController acquisitionController;
                 }else if(!EmailValidator.validate(value)){
                   return 'Por favor, digite um e-mail válido';
                 }else{
-                  controller.setFullName(value);
+                  controller.setEmail(value);
                 }
               },
             ),

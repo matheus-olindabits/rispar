@@ -4,6 +4,7 @@ import 'package:rispar_project/app/modules/simulation/components/register_page/r
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_page.dart';
+import 'package:rispar_project/app/shared/pages/error_page.dart';
 
 class AppModule extends Module {
   @override
@@ -17,5 +18,6 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
     ChildRoute(Modular.initialRoute, child: (_, args) => const AcquisitionPage()),
+    ChildRoute('/erro', child: (_, args) => const ErrorPage()),
   ];
 }
