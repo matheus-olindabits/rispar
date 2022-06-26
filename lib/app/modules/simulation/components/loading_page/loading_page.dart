@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
-import 'package:rispar_project/app/core/ui/style/text_style.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key}) : super(key: key);

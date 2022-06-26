@@ -7,18 +7,19 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _errorPage(context)
+
+    return Scaffold(
+      body: Center(
+        child: _errorPage(context)
+      ),
     );
+
   }
 
   Widget _errorPage(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        SizedBox(
-          height: height(context, .2),
-        ),
         Column(
           children: const [
             Text('Ops, algo ocorreu!', style: TextStyle(
@@ -26,7 +27,7 @@ class ErrorPage extends StatelessWidget {
             ),
             ),
             SizedBox(height: 20,),
-            Text('Não foi possível realizar.\n Tente novamente mais tarde.', style: TextStyle(
+            Text('Não foi possível realizar a ação.\n Tente novamente mais tarde.', style: TextStyle(
               fontSize: 15
             ),
             ),
@@ -42,7 +43,7 @@ class ErrorPage extends StatelessWidget {
             height: height(context, 0.06),
             child: ElevatedButton(
               onPressed: () {
-                Modular.to.pushNamedAndRemoveUntil('/home/10', ModalRoute.withName('/'));
+                Modular.to.pushNamedAndRemoveUntil('/', ModalRoute.withName('/'));
               },
               child: const Text('Tentar uma nova simulação', style: TextStyle(fontWeight: FontWeight.bold),),
             ),

@@ -20,6 +20,6 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
     ChildRoute(Modular.initialRoute, child: (_, args) => const AcquisitionPage()),
-    ChildRoute('/erro', child: (_, args) => const ErrorPage()),
+    ChildRoute('/error', child: (_, args) => const ErrorPage()),
   ];
 }

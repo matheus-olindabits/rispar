@@ -116,6 +116,7 @@ late AcquisitionController acquisitionController;
                 SizedBox(
                   width: width(context, 0.6),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     style: const TextStyle(
                     fontSize: 30, color: primary, fontWeight: FontWeight.bold),
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly, CurrencyInputFormatter()],

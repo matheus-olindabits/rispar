@@ -4,6 +4,7 @@ import 'package:rispar_project/app/modules/simulation/components/progress_page/p
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:rispar_project/app/modules/simulation/shared/models/simulation.dart';
 import 'package:rispar_project/app/modules/simulation/shared/simulation_service.dart';
+import 'package:rispar_project/app/shared/components/catch_error.dart';
 
 part 'select_parcel_controller.g.dart';
 
@@ -53,11 +54,9 @@ abstract class _SelectParceleControllerBase with Store {
       await simulationService.sendSimulation(simulation);
       loading = false;
       setStepProgress();
-      print('ok');
     } catch (error) {
       loading = false;
-      print('erro');
-      //SnackBarErro.snackbarErro(error);
+      CatchError.errorRequest(error);
     }
   }
 

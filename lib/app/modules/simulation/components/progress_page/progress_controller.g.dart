@@ -24,6 +24,20 @@ mixin _$ProgressController on _ProgressControllerBase, Store {
     });
   }
 
+  final _$_ProgressControllerBaseActionController =
+      ActionController(name: '_ProgressControllerBase');
+
+  @override
+  dynamic validateComeBack() {
+    final _$actionInfo = _$_ProgressControllerBaseActionController.startAction(
+        name: '_ProgressControllerBase.validateComeBack');
+    try {
+      return super.validateComeBack();
+    } finally {
+      _$_ProgressControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
