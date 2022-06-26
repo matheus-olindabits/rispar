@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:rispar_project/app/modules/simulation/shared/models/proposal_received.dart';
 
 part 'acquisition_controller.g.dart';
 
@@ -12,6 +13,7 @@ abstract class _AcquisitionControllerBase with Store {
   late double money;
   late int parcel;
   late int percentage;
+  late ProposalReceived proposalReceived;
 
   @observable
   int step = 1;

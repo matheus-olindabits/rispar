@@ -28,4 +28,13 @@ class MoneyValidation extends TextInputFormatter{
     return double.parse(valor);
   }
 
+  static double changeDotToComma(String value){
+    var valor = value.replaceAll('.', ',');
+    return double.parse(valor);
+  }
+
+  static String convertDate(String date){
+    return '${date.substring(8, 10)}/${date.substring(5, 7)}/${date.substring(0, 4)}';
+  }
+
 }

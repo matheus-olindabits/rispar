@@ -6,6 +6,7 @@ import 'package:rispar_project/app/modules/simulation/components/money_available
 import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/register_page/register_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_page.dart';
+import 'package:rispar_project/app/modules/simulation/components/simuation_result/simulation_result_page.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 
 class AcquisitionPage extends StatefulWidget {
@@ -49,7 +50,7 @@ class AcquisitionPageState extends ModularState<AcquisitionPage, AcquisitionCont
                 SizedBox(height: height(context, 0.05)),
                 const ProgressPage(),
                 SizedBox(
-                  child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : Container(child: Text('teste'),),
+                  child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : controller.step == 4 ? const SimulationResultPage() : Container(child: Text('teste'),),
                 ),
               ],
             ),
