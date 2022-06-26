@@ -3,7 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
-import 'package:rispar_project/app/modules/simulation/components/loading_page.dart/loading_page.dart';
+import 'package:rispar_project/app/modules/simulation/components/loading_page/loading_page.dart';
+import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/components/select_parcel_page/select_parcel_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -43,7 +44,7 @@ late AcquisitionController acquisitionController;
             height: height(context, 0.05),
           ),
 
-          _progressIndicator(),
+          const ProgressPage(),
 
           SizedBox(
             height: height(context, 0.05),
@@ -79,35 +80,6 @@ late AcquisitionController acquisitionController;
             height: height(context, 0.05),
           ),
 
-        ],
-      ),
-    );
-  }
-
-  Widget _progressIndicator(){
-    return SizedBox(
-      width: width(context, 1),
-      child: Row(
-        children: [
-          SizedBox(
-            width: width(context, 0.2),
-            child: InkWell(
-              onTap: (() => controller.acquisitionController.step = 2),
-              child: const Icon(Icons.arrow_back, size: 35, color: primary),
-            )
-          ),
-          SizedBox(
-            width: width(context, 0.7),
-            child: const StepProgressIndicator(
-              totalSteps: 3,
-              currentStep: 2,
-              size: 8,
-              padding: 0,
-              selectedColor: primary,
-              unselectedColor: light,
-              roundedEdges: Radius.circular(10),
-            ),
-          ),
         ],
       ),
     );
@@ -261,7 +233,7 @@ late AcquisitionController acquisitionController;
             height: height(context, 0.06),
             child: ElevatedButton(
               onPressed: () {
-                controller.acquisitionController.step = 2;
+                //controller.acquisitionController.step = 2;
               },
               child: const Text('Adicionar garantia', style: TextStyle(fontWeight: FontWeight.bold),),
             ),

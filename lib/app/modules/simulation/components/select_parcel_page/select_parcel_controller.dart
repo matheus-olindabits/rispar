@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_controller.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:rispar_project/app/modules/simulation/shared/models/simulation.dart';
 import 'package:rispar_project/app/modules/simulation/shared/simulation_service.dart';
@@ -12,6 +13,7 @@ class SelectParceleController = _SelectParceleControllerBase with _$SelectParcel
 abstract class _SelectParceleControllerBase with Store {
 
   AcquisitionController acquisitionController = Modular.get<AcquisitionController>();
+  ProgressController progressController = Modular.get<ProgressController>();
   SimulationService simulationService = SimulationService();
 
   @observable
@@ -31,6 +33,11 @@ abstract class _SelectParceleControllerBase with Store {
     acquisitionController.percentage = value;
   }
 
+  void setStepProgress(){
+     acquisitionController.step = 4;
+     progressController.stepActual = 3;
+  }
+
   Future<void> sendSimluation() async {
     try {
       loading = true;
@@ -45,6 +52,7 @@ abstract class _SelectParceleControllerBase with Store {
       );
       await simulationService.sendSimulation(simulation);
       loading = false;
+      setStepProgress();
       print('ok');
     } catch (error) {
       loading = false;

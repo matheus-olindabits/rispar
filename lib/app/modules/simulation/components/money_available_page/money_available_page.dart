@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:rispar_project/app/core/ui/style/colors.dart';
 import 'package:rispar_project/app/core/ui/style/size.dart';
 import 'package:rispar_project/app/modules/simulation/components/money_available_page/money_available_controller.dart';
+import 'package:rispar_project/app/modules/simulation/components/progress_page/progress_page.dart';
 import 'package:rispar_project/app/modules/simulation/pages/acquisition/acquisition_controller.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -47,7 +48,7 @@ late AcquisitionController acquisitionController;
             height: height(context, 0.05),
           ),
 
-          _progressIndicator(),
+          const ProgressPage(),
 
           SizedBox(
             height: height(context, 0.05),
@@ -61,35 +62,6 @@ late AcquisitionController acquisitionController;
 
           _formToGetMoney(),
 
-        ],
-      ),
-    );
-  }
-
-  Widget _progressIndicator(){
-    return SizedBox(
-      width: width(context, 1),
-      child: Row(
-        children: [
-          SizedBox(
-            width: width(context, 0.2),
-            child: InkWell(
-              onTap: (() => controller.acquisitionController.step = 1),
-              child: const Icon(Icons.arrow_back, size: 35, color: primary),
-            )
-          ),
-          SizedBox(
-            width: width(context, 0.7),
-            child: const StepProgressIndicator(
-              totalSteps: 3,
-              currentStep: 1,
-              size: 8,
-              padding: 0,
-              selectedColor: primary,
-              unselectedColor: light,
-              roundedEdges: Radius.circular(10),
-            ),
-          ),
         ],
       ),
     );
@@ -181,7 +153,7 @@ late AcquisitionController acquisitionController;
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      controller.acquisitionController.step = 3;
+                      controller.setStepProgress();
                     }
                   },
                   child: const Text('Continuar'),
