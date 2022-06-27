@@ -29,12 +29,12 @@ mixin _$AcquisitionController on _AcquisitionControllerBase, Store {
 
   @override
   dynamic changeStep(int value) {
-    final _$actionInfo = _$_AcquisitionControllerBaseActionController
+    final $actionInfo = _$_AcquisitionControllerBaseActionController
         .startAction(name: '_AcquisitionControllerBase.changeStep');
     try {
       return super.changeStep(value);
     } finally {
-      _$_AcquisitionControllerBaseActionController.endAction(_$actionInfo);
+      _$_AcquisitionControllerBaseActionController.endAction($actionInfo);
     }
   }
 

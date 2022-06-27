@@ -137,15 +137,22 @@ late AcquisitionController acquisitionController;
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: [
-        Text(column, style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold
+        SizedBox(
+          child: Text(column, style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold
+            ),
           ),
         ),
-        Text(value, style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Colors.grey
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(value, style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey
+              ),
+            ),
           ),
         ),
       ],

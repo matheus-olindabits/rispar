@@ -50,7 +50,7 @@ class AcquisitionPageState extends ModularState<AcquisitionPage, AcquisitionCont
                 SizedBox(height: height(context, 0.05)),
                 const ProgressPage(),
                 SizedBox(
-                  child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : controller.step == 4 ? const SimulationResultPage() : Container(child: Text('teste'),),
+                  child: controller.step == 1 ? const RegisterPage() : controller.step == 2 ? const MoneyAvailablePage() : controller.step == 3 ? const SelectParcelePage() : controller.step == 4 ? const SimulationResultPage() : const RegisterPage()
                 ),
               ],
             ),

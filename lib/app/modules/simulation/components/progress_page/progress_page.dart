@@ -42,16 +42,18 @@ class ProgressPageState extends ModularState<ProgressPage, ProgressController> {
               child: const Icon(Icons.arrow_back, size: 35, color: primary),
             )
           ),
-          SizedBox(
-            width: width(context, 0.7),
-            child: StepProgressIndicator(
-              totalSteps: 3,
-              currentStep: controller.stepActual,
-              size: 8,
-              padding: 0,
-              selectedColor: primary,
-              unselectedColor: light,
-              roundedEdges: const Radius.circular(10),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: width(context, 0.1)),
+              child: StepProgressIndicator(
+                totalSteps: 3,
+                currentStep: controller.stepActual,
+                size: 8,
+                padding: 0,
+                selectedColor: primary,
+                unselectedColor: light,
+                roundedEdges: const Radius.circular(10),
+              ),
             ),
           ),
         ],

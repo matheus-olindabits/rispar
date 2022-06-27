@@ -82,16 +82,26 @@ late AcquisitionController acquisitionController;
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Text('Simule', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text('Simule', style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25
+                    ),
+                  ),
                 ),
               ),
               SizedBox(width: 10,),
-              Text('agora', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: primary
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('agora', style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: primary
+                    ),
+                  ),
                 ),
               ),
             ]
@@ -156,6 +166,7 @@ late AcquisitionController acquisitionController;
                 }else{
                   controller.setEmail(value);
                 }
+                return null;
               },
             ),
 

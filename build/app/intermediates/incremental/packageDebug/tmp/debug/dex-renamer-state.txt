@@ -1,4 +1,4 @@
-#Sun Jun 26 12:38:07 BRT 2022
+#Sun Jun 26 20:25:59 BRT 2022
 base.0=/Users/matheusleal/Documents/projetos desenv/rispar/rispar/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

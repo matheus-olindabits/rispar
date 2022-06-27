@@ -44,23 +44,23 @@ mixin _$ProgressController on _ProgressControllerBase, Store {
 
   @override
   dynamic validateComeBack() {
-    final _$actionInfo = _$_ProgressControllerBaseActionController.startAction(
+    final $actionInfo = _$_ProgressControllerBaseActionController.startAction(
         name: '_ProgressControllerBase.validateComeBack');
     try {
       return super.validateComeBack();
     } finally {
-      _$_ProgressControllerBaseActionController.endAction(_$actionInfo);
+      _$_ProgressControllerBaseActionController.endAction($actionInfo);
     }
   }
 
   @override
   dynamic changeStepActual(int value) {
-    final _$actionInfo = _$_ProgressControllerBaseActionController.startAction(
+    final $actionInfo = _$_ProgressControllerBaseActionController.startAction(
         name: '_ProgressControllerBase.changeStepActual');
     try {
       return super.changeStepActual(value);
     } finally {
-      _$_ProgressControllerBaseActionController.endAction(_$actionInfo);
+      _$_ProgressControllerBaseActionController.endAction($actionInfo);
     }
   }
 

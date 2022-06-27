@@ -14,6 +14,7 @@ mixin _$MoneyAvailableController on _MoneyAvailableControllerBase, Store {
 
   @override
   void setStepProgress() {
+    // ignore: no_leading_underscores_for_local_identifiers
     final _$actionInfo = _$_MoneyAvailableControllerBaseActionController
         .startAction(name: '_MoneyAvailableControllerBase.setStepProgress');
     try {

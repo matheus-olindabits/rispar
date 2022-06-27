@@ -64,18 +64,28 @@ late AcquisitionController acquisitionController;
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text('De quanto', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text('De quanto', style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25
+                    ),
+                  ),
                 ),
               ),
               SizedBox(width: 10,),
-              Text('você precisa?', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: primary
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('você precisa?', style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: primary
+                    ),
+                  ),
                 ),
               ),
             ]
@@ -95,40 +105,44 @@ late AcquisitionController acquisitionController;
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: width(context, 0.15), 
-                  child: const Text('R\$', style: TextStyle(
-                    fontSize: 35, color: primary, fontWeight: FontWeight.bold),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width(context, 0.1)),
+                    child: const Text('R\$', style: TextStyle(
+                      fontSize: 35, color: primary, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  width: width(context, 0.6),
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    style: const TextStyle(
-                    fontSize: 30, color: primary, fontWeight: FontWeight.bold),
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly, MoneyValidation()],
-                    decoration: const InputDecoration(
-                      hintText: "0,00",
-                      floatingLabelBehavior: FloatingLabelBehavior.always
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(right: width(context, 0.1)),
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      style: const TextStyle(
+                      fontSize: 30, color: primary, fontWeight: FontWeight.bold),
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly, MoneyValidation()],
+                      decoration: const InputDecoration(
+                        hintText: "0,00",
+                        floatingLabelBehavior: FloatingLabelBehavior.always
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Por favor, digite um valor';
+                        }else if(MoneyValidation.convertToDoubleMask(value) < 500 || MoneyValidation.convertToDoubleMask(value) > 300000 ){
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Digite um valor entre R\$ 500,00 e R\$ 3000.000,00')),
+                          );
+                          return 'Valor não permitido';
+                        }else{
+                          controller.setGetMoney(MoneyValidation.convertToDoubleMask(value));
+                        }
+                        return null;
+                      },
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Por favor, digite um valor';
-                      }else if(MoneyValidation.convertToDoubleMask(value) < 500 || MoneyValidation.convertToDoubleMask(value) > 300000 ){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Digite um valor entre R\$ 500,00 e R\$ 3000.000,00')),
-                        );
-                        return 'Valor não permitido';
-                      }else{
-                        controller.setGetMoney(MoneyValidation.convertToDoubleMask(value));
-                      }
-                      return null;
-                    },
                   ),
                 ),
               ],

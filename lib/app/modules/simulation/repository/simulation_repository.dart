@@ -9,7 +9,6 @@ class SimulationRepository {
     return CustomDio.authInstance
         .post('/acquisition/simulation', data: simulation.toMap())
         .then((res) {
-          print(res);
       return ProposalReceived.fromJson(json.encode(res.data));
     });
   }

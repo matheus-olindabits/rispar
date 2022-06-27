@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'colors.dart';
 
-TextStyle get titleStyle => TextStyle(
+TextStyle get titleStyle => const TextStyle(
       fontSize: 15,
       fontFamily: 'RobotoRegular',
       fontWeight: FontWeight.w600,
